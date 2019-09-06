@@ -1,5 +1,5 @@
 # About
-In fastai's [Code-First Introduction to Natural Language Processing](https://www.fast.ai/2019/07/08/fastai-nlp/) course in chapter 7, various Machine Translation architectures were covered. In the mentioned lessons, around 40000 French questions were used as to translate into English. I copied the notebooks and wanted to reproduce the results on a bigger English-German dataset. Specifically, I wanted to compare different Machine Translation architectures regarding accuracy (e.g. BLEU scores) and efficiency (training time). Check the fastai NLP notebooks for more [details](https://github.com/fastai/course-nlp), they are a great read! 
+In fastai's [Code-First Introduction to Natural Language Processing](https://www.fast.ai/2019/07/08/fastai-nlp/) course in chapter 7, various Machine Translation architectures were covered. In the mentioned lessons, around 40000 French questions were used to translate into English. I copied the notebooks and wanted to reproduce the results on a bigger English-German dataset. Specifically, I wanted to compare different Machine Translation architectures regarding accuracy (e.g. BLEU scores) and efficiency (training time). Check the fastai NLP notebooks for more [details](https://github.com/fastai/course-nlp), they are a great read! 
 
 # Dataset
 As training set, I decided to take a English-German parallel corpus from the latest WMT 2019 Conference ([ACL 2019: Fourth Conference on Machine Translation](http://www.statmt.org/wmt19/)]). I chose the `News Commentary v14` corpus which has 338285 English/German parallel sentences. For validation and test sets, we have two options. Either 1) take a small subset from our training set and label them as validation and/or test set or 2) we download a separate validation and/or test set from different sources. We can do both just in case. For option 2) let's download the `newstest2013` and  `newstest2014` corpora as validation and test sets respectively. Those two corpora are popular in Machine Translation research to validate MT models. The original Transformer paper (["Attention Is All You Need"](https://arxiv.org/abs/1706.03762)) used those two corpora as well for example. You can download them [here](https://google.github.io/seq2seq/data/). 
@@ -14,3 +14,68 @@ A few (lower-cased) examples from our `News Commentary v14` corpus:
 | 1 | such pessimism is warranted. | ein derartiger pessimismus ist gerechtfertigt. |  
 | 2 | that is also what, if you take her literally, merkel is doing now. | dasselbe tut derzeit auch merkel, wenn man sie beim wort nimmt. |
 | 3 | 	it proved to be the tipping point, triggering waves of protests by lawyers and other groups in pakistan’s main cities. | der vorfall erwies sich als wendepunkt, der wellen des protests von anwälten und anderen gruppen in pakistans größten städten auslöste. |
+
+
+# List the models
+1. seq2seq model with GRUs
+2. seq2seq model with GRUs + Teacher's Forcing
+3. seq2seq model with GRUs + Teacher's Forcing + Attention
+4. Transformer model
+
+# Results
+
+(I pick the model according to the epoch with the highest BLEU score): 
+
+| model               | train_loss | valid_loss | seq2seq_acc | bleu    | avg train time per epoch
+|---------------------|------------|------------|-------------|---------|-------------------------|
+| seq2seq             | ||||||
+| + Teacher's Forcing | ||||||
+| + Attention         | ||||||
+| Transformer         | ||||||
+ 
+ 
+ # Example outputs (4x)
+ 
+Here some German sentences that our MT model outputted:  
+ 
+|  Source                |  Output
+|-------------------------|------------------------------------------|
+| English source sentence | trump ’s simplistic , xenophobic rhetoric will also find a sympathetic audience among poles and hungarians who fear large - scale immigration . |
+| German target sentence  | trumps vereinfachende , xxunk rhetorik wird auch bei jenen polen und ungarn anklang finden , die sich vor umfangreicher zuwanderung fürchten . |
+| seq2seq                 | trumps xxunk xxunk xxunk , , , , , , , , und und und und xxunk xxunk . . |
+| + Teacher's Forcing     | trumps xxunk xxunk xxunk , , , xxunk xxunk und , , , , und und xxunk xxunk . |
+| + Attention             | fill . |
+| Transformer             | trumps allzu , fremdenfeindliche rhetorik wird auch unter polen polen und ungarn mit finden , die die vor großen einwanderung fürchten . |
+
+
+|  Source                |  Output
+|-------------------------|------------------------------------------|
+| English source sentence | |
+| German target sentence  |  |
+| seq2seq                 |  |
+| + Teacher's Forcing     | |
+| + Attention             | |
+| Transformer             | |
+
+
+|  Source                |  Output
+|-------------------------|------------------------------------------|
+| English source sentence | |
+| German target sentence  |  |
+| seq2seq                 |  |
+| + Teacher's Forcing     | |
+| + Attention             | |
+| Transformer             | |
+
+
+|  Source                |  Output
+|-------------------------|------------------------------------------|
+| English source sentence | |
+| German target sentence  |  |
+| seq2seq                 |  |
+| + Teacher's Forcing     | |
+| + Attention             | |
+| Transformer             | |
+
+
+# Summary
