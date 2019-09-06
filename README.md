@@ -44,38 +44,40 @@ Here some German sentences that our MT model outputted:
 | German target sentence  | trumps vereinfachende , xxunk rhetorik wird auch bei jenen polen und ungarn anklang finden , die sich vor umfangreicher zuwanderung fürchten . |
 | seq2seq                 | trumps xxunk xxunk xxunk , , , , , , , , und und und und xxunk xxunk . . |
 | + Teacher's Forcing     | trumps xxunk xxunk xxunk , , , xxunk xxunk und , , , , und und xxunk xxunk . |
-| + Attention             | fill . |
+| + Attention             | die xxunk xxunk , die xxunk , die xxunk , die xxunk und xxunk und xxunk und xxunk . |
 | Transformer             | trumps allzu , fremdenfeindliche rhetorik wird auch unter polen polen und ungarn mit finden , die die vor großen einwanderung fürchten . |
 
 
 |  Source                |  Output
 |-------------------------|------------------------------------------|
-| English source sentence | |
-| German target sentence  |  |
-| seq2seq                 |  |
-| + Teacher's Forcing     | |
-| + Attention             | |
+| English source sentence | my portal to the world of artificial intelligence is a narrow one : the more than xxunk - old game of chess . |
+| German target sentence  | mein eigener zugang zur welt der künstlichen intelligenz ist ein eng xxunk : das über 500 jahre alte xxunk schach . |
+| seq2seq                 | ich der der der der der der der der xxunk xxunk xxunk xxunk xxunk xxunk xxunk xxunk xxunk |
+| + Teacher's Forcing     | meine xxunk der der der der ist ist ein , , , , xxunk xxunk xxunk xxunk . |
+| + Attention             | die der der der der der der der xxunk , die xxunk , die xxunk xxunk xxunk . |
 | Transformer             | |
 
 
 |  Source                |  Output
 |-------------------------|------------------------------------------|
-| English source sentence | |
-| German target sentence  |  |
-| seq2seq                 |  |
-| + Teacher's Forcing     | |
-| + Attention             | |
+| English source sentence | the transition from autocracy to democracy in the middle east is likely to be bumpy and unstable , at best .|
+| German target sentence  |  der übergang von der autokratie zur demokratie i m nahen osten wird wahrscheinlich holprig und instabil verlaufen – bestenfalls . |
+| seq2seq                 | der der der nahen osten osten osten osten osten osten osten osten und und und osten . . |
+| + Teacher's Forcing     | der kampf der der in in in osten in osten ist und und und und und . |
+| + Attention             | die der der der der der der in der der in der der in der xxunk , , , die zu zu . |
 | Transformer             | |
 
 
 |  Source                |  Output
 |-------------------------|------------------------------------------|
-| English source sentence | |
-| German target sentence  |  |
-| seq2seq                 |  |
-| + Teacher's Forcing     | |
-| + Attention             | |
+| English source sentence | but it is time to go further and begin to lobby aggressively for faster financial liberalization in the developing world . |
+| German target sentence  | es ist allerdings an der zeit , sich darüber hinaus mit mehr nachdruck für eine raschere finanzliberalisierung in den entwicklungsländern einzusetzen . |
+| seq2seq                 | aber es es zeit zeit , , , , die die die die in in zu zu zu . |
+| + Teacher's Forcing     | es ist es zeit zeit , , , und , die die die die die die der zu |
+| + Attention             | aber ist es , , die zu und und die zu und zu zu zu zu zu zu zu . |
 | Transformer             | |
+
+
 
 
 # Summary
