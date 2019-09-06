@@ -1,2 +1,16 @@
-# english_german_translation
-Translating English to German with different Machine Translation Architectures (seq2seq, Attention, Transformer)
+# About
+In fastai's [Code-First Introduction to Natural Language Processing](https://www.fast.ai/2019/07/08/fastai-nlp/) course in chapter 7, various Machine Translation architectures were covered. In the mentioned lessons, around 40000 French questions were used as to translate into English. I copied the notebooks and wanted to reproduce the results on a bigger English-German dataset. Specifically, I wanted to compare different Machine Translation architectures regarding accuracy (e.g. BLEU scores) and efficiency (training time). Check the fastai NLP notebooks for more [details](https://github.com/fastai/course-nlp), they are a great read! 
+
+# Dataset
+As training set, I decided to take a English-German parallel corpus from the latest WMT 2019 Conference ([ACL 2019: Fourth Conference on Machine Translation](http://www.statmt.org/wmt19/)]). I chose the `News Commentary v14` corpus which has 338285 English/German parallel sentences. For validation and test sets, we have two options. Either 1) take a small subset from our training set and label them as validation and/or test set or 2) we download a separate validation and/or test set from different sources. We can do both just in case. For option 2) let's download the `newstest2013` and  `newstest2014` corpora as validation and test sets respectively. Those two corpora are popular in Machine Translation research to validate MT models. The original Transformer paper (["Attention Is All You Need"](https://arxiv.org/abs/1706.03762)) used those two corpora as well for example. You can download them [here](https://google.github.io/seq2seq/data/). 
+
+For my experiments, I decided to take 10% from the `News Commentary v14` corpus as validation set. Moreover, I just keep the sentences that have less than 25 tokens per sentence. This will make training a bit faster and likely more accurate (the longer a sentence the lower the BLEU score tend to be). With this setup, we have 137400 language pairs for training and 15335 language pairs for validation. This is not a lot for Machine Translation models (a few million language pairs for training is not uncommon) but it should be enough for experimenting. All the preprocessing (+ creating embeddings for our sentences) are done in the `preprocessing_embedding.ipynb` file.
+
+A few (lower-cased) examples from our `News Commentary v14` corpus: 
+
+| ID          |   English  |  German   | 
+|-------------|-------------|----------|
+| 0 | in china, people call it fazhan , or “development,” but in much of rest of the world, it is more commonly described simply as the “china boom,” or the “china miracle.” | in china sagt man dazu fazhan , also „entwicklung”,  aber in den meisten teilen der welt wird dieses phänomen einfach als „china-boom“ oder „chinesisches wunder“ bezeichnet. |  
+| 1 | such pessimism is warranted. | ein derartiger pessimismus ist gerechtfertigt. |  
+| 2 | that is also what, if you take her literally, merkel is doing now. | dasselbe tut derzeit auch merkel, wenn man sie beim wort nimmt. |
+| 3 | 	it proved to be the tipping point, triggering waves of protests by lawyers and other groups in pakistan’s main cities. | der vorfall erwies sich als wendepunkt, der wellen des protests von anwälten und anderen gruppen in pakistans größten städten auslöste. |
