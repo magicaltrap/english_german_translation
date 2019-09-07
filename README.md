@@ -81,3 +81,4 @@ Here some German sentences that our MT model outputted:
 
 
 # Summary
+I tried to translate English sentences into German with different Machine Translation architectures. By using **137400** language pairs for training and **15335** language pairs for validation, we can see that the Transformer outperforms the other architectures by far. Looking at the example outputs, the Transformer model is the only model that doesn't output repetitive words and can get the gist of the English source. I'm sure that with a bigger training set and more training time (I only trained for an hour) that the outputs will be better. Looking at the BLEU score for the Transformer of **0.484944** , there's a dramatic jump from the other models, more than double. The Transformer's training time per epoch is also less than half compared to the other models. 
